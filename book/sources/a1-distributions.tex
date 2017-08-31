@@ -1,0 +1,54 @@
+% !TEX root = ../script.tex
+\section{Основные вероятностные распределения}
+
+\subsection{Многомерное нормальное распределение}
+\label{sec:gauss}
+
+Многомерное нормальное распределение или гауссовское распределение --- такое вероятностное распределение $p(\vecX | \vecMu, \Sigma)$ на $\vecX \in \bbR^\iD$, что его плотность имеет вид:
+\[
+p(\vecX | \vecMu, \Sigma) = \frac{1}{(2 \pi)^{\iD / 2} |\Sigma|^{1 / 2}}
+\exp \left\{- \frac12 (\vecX - \vecMu)^{\mathrm{T}} \Sigma^{-1} (\vecX - \vecMu) \right\}.
+\]
+Два набора параметров распределения --- вектор $\vecMu$ и матрица $\Sigma$ --- определяют его среднее значение и ковариационную матрицу соответственно.
+Такое распределение обозначают $\mathcal{N}(\vecMu, \Sigma)$.
+
+У нормального распределения множество замечательных свойств, о которых можно прочитать в отдельных главах этой книги или в более общих книгах, таких как книга Бишопа~\cite{bishop2006pattern}.
+
+\subsection{Распределение Дирихле}
+\label{sec:dirichlet}
+
+Носитель распределение Дирихле --- симплекс.
+Для $k$-мерного распределения Дирихле симплекс есть множество точек, для которых:
+\[
+S_k = \left\{ \vecX: \sum_{i = 1}^k x_i = 1, x_i \geq 0, i \in \{1, \ldots, k\} \right\}.
+\]
+Легко видеть, что существует взаимнооднозначное соотвествие между вероятностными распределениями на конечном множестве $\{1, \ldots, k\}$ и точками такого симплекса.
+
+Плотность распределения Дирихле с вектором параметров $\vecA \in \bbR_+^k (\alpha_i \geq 0)$ есть:
+\[
+p(\vecX | \vecA) \propto x_1^{\alpha_1 - 1} \cdot \ldots \cdot x_k^{\alpha_k - 1}.
+\]
+
+Получим нормировочный коэффициент для такого распределения:
+\[
+\int_{\vecX \in S_k} x_1^{\alpha_1 - 1} \cdot \ldots \cdot x_k^{\alpha_k - 1} d\vecX = \frac{\prod_{i = 1}^k \Gamma(\alpha_i)}{\Gamma(\sum_{i = 1}^k \alpha_k)},
+\]
+здесь $\Gamma(a) = \int_{0}^{\infty} t^{a - 1} e^{-t} dt$ --- гамма функция, $\Gamma(n + 1) = n!$ для $n \in \mathbb{N}$ и $\Gamma(a + 1) = a \Gamma(a)$.
+
+Если мы рассмотрим $k = 2$, то получим бета-распределение.
+В частности, выполнено, что:
+\[
+\int_0^1 \theta^{\alpha_1 - 1} (1 - \theta)^{\alpha_2 - 1} d\theta =  \frac{\Gamma(\alpha_1) \Gamma(\alpha_2)}{\Gamma(\alpha_1 + \alpha_2)}.
+\]
+
+\begin{example}
+Найдем среднее бета-распределения.
+\begin{align*}
+\bbE x &= \int_0^1 \theta \frac{\Gamma(\alpha_1 + \alpha_2)}{\Gamma(\alpha_1) \Gamma(\alpha_2)} \theta^{\alpha_1 - 1} (1 - \theta)^{\alpha_2 - 1}d\theta = \\
+&= \frac{\Gamma(\alpha_1 + \alpha_2)}{\Gamma(\alpha_1) \Gamma(\alpha_2)} \int_0^1 \theta^{\alpha_1 + 1 - 1} (1 - \theta)^{\alpha_2 - 1}d\theta = \\
+&= \frac{\Gamma(\alpha_1 + \alpha_2)}{\Gamma(\alpha_1) \Gamma(\alpha_2)} 
+   \frac{\Gamma(\alpha_1 + 1) \Gamma(\alpha_2)}{\Gamma(\alpha_1 + \alpha_2 + 1)} = \frac{\alpha_1}{\alpha_1 + \alpha_2}.
+\end{align*}
+Для распределения Дирихле с вектором параметров $\vecA$ математическое ожидание равно $\bbE x_j = \frac{\alpha_j}{\sum_{i = 1}^k \alpha_k}$.
+
+\end{example}

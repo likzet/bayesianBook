@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: script.aux
+The style file: plain.bst
+Database file #1: script.bib.bib
+Warning--empty publisher in vetrov2007bayesian
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            533 strings with 4862 characters,
+and the built_in function-call counts, 1807 in all, are:
+= -- 161
+> -- 87
+< -- 1
++ -- 36
+- -- 28
+* -- 102
+:= -- 322
+add.period$ -- 20
+call.type$ -- 7
+change.case$ -- 31
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 76
+empty$ -- 152
+format.name$ -- 28
+if$ -- 368
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 10
+newline$ -- 37
+num.names$ -- 14
+pop$ -- 52
+preamble$ -- 1
+purify$ -- 28
+quote$ -- 0
+skip$ -- 50
+stack$ -- 0
+substring$ -- 55
+swap$ -- 8
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 1
+while$ -- 16
+width$ -- 8
+write$ -- 72
+(There was 1 warning)

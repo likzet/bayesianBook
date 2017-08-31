@@ -1,0 +1,158 @@
+%\renewcommand{\(}{\begin{math} \,}
+%\renewcommand{\)}{\,\end{math}}
+\renewcommand{\(}{$\,}
+\renewcommand{\)}{\,$}
+
+\def\nquad{\hspace{-1cm}}
+\def\eqdef{\stackrel{\operatorname{def}}{=}}
+\def\tod{\stackrel{d}{\longrightarrow}}
+\def\tow{\stackrel{w}{\longrightarrow}}
+\def\toP{\stackrel{\P}{\longrightarrow}}
+
+
+\newcommand{\cc}[1]{\mathscr{#1}}
+%\newcommand{\cc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\boldsymbol{#1}}
+
+%\renewcommand{\bar}[1]{\overset{\!\_\!\_\!\_}{#1}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\renewcommand{\hat}[1]{\widehat{#1}}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+
+
+\renewcommand{\Gamma}{\varGamma}
+\renewcommand{\Pi}{\varPi}
+\renewcommand{\Sigma}{\varSigma}
+\renewcommand{\Delta}{\varDelta}
+\renewcommand{\Lambda}{\varLambda}
+\renewcommand{\Psi}{\varPsi}
+\renewcommand{\Phi}{\varPhi}
+\renewcommand{\Theta}{\varTheta}
+\renewcommand{\Omega}{\varOmega}
+\renewcommand{\Xi}{\varXi}
+\renewcommand{\Upsilon}{\varUpsilon}
+%
+\def\nn{\nonumber \\}
+
+\def\suml{\sum\limits}
+\def\supl{\sup\limits}
+\def\maxl{\max\limits}
+\def\infl{\inf\limits}
+\def\intl{\int\limits}
+\def\liml{\lim\limits}
+\def\Cov{\operatorname{Cov}}
+\def\Var{\operatorname{Var}}
+\def\arginf{\operatornamewithlimits{arginf}}
+\def\argsup{\operatornamewithlimits{argsup}}
+\def\argmax{\operatornamewithlimits{argmax}}
+\def\argmin{\operatornamewithlimits{argmin}}
+\def\val{\operatorname{val}}
+
+%\def\E{\boldsymbol{E}}
+%\def\P{\boldsymbol{P}}
+\def\D{\boldsymbol{D}}
+\def\dd{\operatorname{d}}
+\def\tr{\operatorname{tr}}
+\def\I{I\!\!I}
+\def\R{I\!\!R}
+\def\E{I\!\!E}
+\def\P{I\!\!P}
+\def\X{\mathfrak{X}}
+\def\kappa{\varkappa}
+%\def\R{\mathbb{R}}
+\def\Const{\mathrm{Const.} \,}
+\def\cdt{\boldsymbol{\cdot}}
+\def\tm{\!\times\!}
+\def\T{\top}
+\def\diag{\operatorname{diag}}
+\def\diam{\operatorname{diam}}
+\def\rank{\operatorname{rank}}
+\def\loc{\operatorname{loc}}
+
+\def\av{\bb{a}}
+\def\bv{\bb{b}}
+\def\cv{\bb{c}}
+\def\dv{\bb{d}}
+\def\ev{\bb{e}}
+\def\fv{\bb{f}}
+\def\gv{\bb{g}}
+\def\hv{\bb{h}}
+\def\iv{\bb{i}}
+\def\jv{\bb{j}}
+\def\kv{\bb{k}}
+\def\lv{\bb{l}}
+\def\mv{\bb{m}}
+\def\nv{\bb{n}}
+\def\ov{\bb{o}}
+\def\pv{\bb{p}}
+\def\qv{\bb{q}}
+\def\rv{\bb{r}}
+\def\sv{\bb{s}}
+\def\tv{\bb{t}}
+\def\uv{\bb{u}}
+\def\vv{\bb{v}}
+\def\wv{\bb{w}}
+\def\xv{\bb{x}}
+\def\yv{\bb{y}}
+\def\zv{\bb{z}}
+
+\def\Cv{\bb{C}}
+\def\Gv{\bb{G}}
+\def\Mv{\bb{M}}
+\def\Sv{\bb{S}}
+\def\Uv{\bb{U}}
+\def\Yv{\bb{Y}}
+\def\Dv{\bb{D}}
+\def\Zv{\bb{Z}}
+
+
+\def\alphav{\bb{\alpha}}
+\def\epsv{\bb{\varepsilon}}
+\def\etav{\bb{\eta}}
+\def\gammav{\bb{\gamma}}
+\def\varepsilonv{\bb{\varepsilon}}
+\def\phiv{\bb{\phi}}
+\def\psiv{\bb{\psi}}
+\def\tauv{\bb{\tau}}
+\def\upsilonv{\bb{\upsilon}}
+\def\xiv{\bb{\xi}}
+\def\zetav{\bb{\zeta}}
+
+\def\Psiv{\bb{\Psi}}
+\def\CONST{\mathtt{C}}
+
+
+
+\def\itemv{\vfill\item}
+\newenvironment{myslide}[1]
+    {\begin{frame}\frametitle{#1}\vfill}
+    {\vfill\end{frame}}
+
+\def\vsp{\vspace{0.05\textheight} \vfill}
+\def\summarysign{\resizebox{0.08\textwidth}{0.08\textheight}{\includegraphics{summary}}\,}
+\def\nix{}
+\def\wpu{$\bullet$}
+
+\def\btri{\vfill{\( \blacktriangleright \) }}
+\def\btrir{\vfill{\( \blacktriangleright \) }}
+
+\newcommand{\mygraphics}[3]{\begin{center}
+    \resizebox{#1\textwidth}{#2\textheight}{\includegraphics{#3}}
+    \end{center}
+}
+
+\newcommand{\mybox}[3]{\begin{center}
+    \resizebox{#1\textwidth}{#2\textheight}{#3}
+    \end{center}
+}
+
+%\definecolor{myhcolor}{rgb}{0.2,0,0.8}
+%\definecolor{myhcolor}{named}{red}
+\newenvironment{eqnh}
+{
+    %\color{myhcolor}} {}
+    \setbeamercolor{postit}{fg=black,bg=hellgelb} %{fg=myhcolor,bg=white}
+    \begin{beamercolorbox}[center,wd=\textwidth]{postit} %rounded=true,shadow=true,
+    \begin{eqnarray*}}
+    {\end{eqnarray*}\end{beamercolorbox}
+}

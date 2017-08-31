@@ -1,0 +1,53 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{textcomp}
+\usepackage{mathrsfs}
+\usepackage{graphicx,epstopdf}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{imakeidx}
+\makeindex
+
+\usepackage{algpseudocode,algorithm,algorithmicx}
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\algrenewcommand\algorithmicrequire{\textbf{Вход:}}
+
+\input ./tex/mydef
+\input ./tex/statdef
+\input ./tex/my
+
+
+\begin{document}
+
+\title{Основания Байесовской статистики}
+\author{Зайцев А., Янович Ю. \\ Сколтех, ИППИ РАН \\ \texttt{likzet@gmail.com}}
+\date{}
+
+\maketitle
+\tableofcontents
+
+\input ./sources/1-introduction.tex
+\input ./sources/2-statMod.tex
+\input ./sources/2-asymptNorm.tex
+\input ./sources/3-desTheory.tex
+\input ./sources/4-priorSelectionConjugate.tex
+\input ./sources/5-priorSelectionObjective.tex
+\input ./sources/6-priorSelectionReference.tex
+\input ./sources/literature.tex
+
+\appendix
+\input ./sources/a1-distributions.tex
+
+\printindex
+
+\bibliographystyle{plain}
+\bibliography{script.bib} 
+
+\end{document} 
