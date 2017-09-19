@@ -89,12 +89,12 @@ p(X | \vecT) = \prod_{j = 1}^{\sS} h(\vecX_j) \exp \left(\vecT^\T \sum_{j = 1}^\
 \]
 С помощью прямых вычислений получим, что
 \[
-\nabla_{\vecT} \pi(\vecT| \vecTau, \sS_0) = \pi(\vecT| \vecTau, \sS_0) (\vecTau - \sS_0 A(\vecT)).
+\nabla_{\vecT} \pi(\vecT| \vecTau, \sS_0) = \pi(\vecT| \vecTau, \sS_0) (\vecTau - \sS_0 \nabla_{\vecT} A(\vecT)).
 \]
 Так как $\pi(\vecT| \vecTau, \sS_0)$ --- плотность вероятностного распределения, то она обращается в ноль в бесконечности.
 Тогда согласно теореме Грина:
 \[
-\int \pi(\vecT| \vecTau, \sS_0) (\vecTau - \sS_0 A(\vecT)) d\vecT =
+\int \pi(\vecT| \vecTau, \sS_0) (\vecTau - \sS_0 \nabla_{\vecT} A(\vecT)) d\vecT =
 \int_{\bbR^\pD} \nabla_{\vecT} \pi(\vecT| \vecTau, \sS_0) d\vecT = 0.
 \]
 Cледовательно, 
