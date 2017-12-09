@@ -27,7 +27,7 @@
 \pi^*(\theta) = \mathrm{arg} \max_{\pi(\theta)} \mathrm{MI}_{\pi(\theta)}(\Theta, T).
 \]
 
-Однако часто невозможно получить аналитическое решение такой вариационной задачи.
+Однако часто аналитическое решение такой вариационной задачи получить невозможно.
 
 \subsection{Вычисление опорного априорного распределения}
 
@@ -60,12 +60,12 @@ f_k(\theta) = \exp \left(\int p(\mathbf{t}^k | \theta) \log p(\theta | \mathbf{t
 \[
 \pi_k(\theta) = \sup_{\pi(\theta)} \int \pi(\theta) \log \frac{f_k(\theta)}{\pi(\theta)} d\theta + \lambda \left(\int \pi(\theta) d\theta - 1 \right).
 \]
-Используя вариационное исчисление, мы получаем решение:
+Используя вариационное исчисление, мы получаем:
 \[
 \pi^*_k(\theta) \propto f_k(\theta).
 \]
 
-Не будем здесь приводить решение этой вариационной задачи.
+Не будем здесь приводить полного решения этой вариационной задачи.
 Получим только доказательство того, что 
 \[
 \pi^*_k(\theta) = f_k(\theta).
@@ -74,21 +74,21 @@ f_k(\theta) = \exp \left(\int p(\mathbf{t}^k | \theta) \log p(\theta | \mathbf{t
 \begin{proof}
 Пусть $T$ и $\theta$ --- дискретны, тогда
 \[
-\pi^*_k(\theta) = \argmax_{\pi(\theta)} \pi_i \frac{q_i}{\pi_i} + \lambda \left(\sum_i \pi_i - 1\right),
+\pi^*_k(\theta) = \argmax_{\pi(\theta)} \sum_i \pi_i \frac{q_i}{\pi_i} + \lambda \left(\sum_i \pi_i - 1\right),
 \]
 здесь $\pi_i$ --- вероятности $\pi(\theta_i)$, $q_i = f_k(\theta_i)$.
 Дифференцируя по $\pi_i$, получаем необходимое условие экстремума:
 \begin{align*}
-\frac{\partial}{\partial \pi_j} \left[ \pi_i \frac{q_i}{\pi_i} + \lambda \left(\sum_i \pi_i - 1\right)\right] &= \log (q_j / \pi_i) + \pi_j (q_j / \pi_j)^{-1} (-q_j / \pi_j^2) + \lambda= \\
+\frac{\partial}{\partial \pi_j} \left[ \sum_i \pi_i \frac{q_i}{\pi_i} + \lambda \left(\sum_i \pi_i - 1\right)\right] &= \log (q_j / \pi_j) + \pi_j (q_j / \pi_j)^{-1} (-q_j / \pi_j^2) + \lambda= \\
 &= -1 -\log \pi_j + \log q_j + \lambda = 0.
 \end{align*}
 Следовательно,
 \[
-\log \pi_i = \log q_i + \lambda - 1.
+\log \pi_j = \log q_j + \lambda - 1.
 \]
 Таким образом,
 \[
-\pi_i = q_i e^{\lambda - 1}.
+\pi_j = q_j e^{\lambda - 1}.
 \]
 Тогда 
 \[
@@ -109,8 +109,8 @@ f_k(\theta) = \exp \left(\int p(\mathbf{t}^k | \theta) \log p(\theta | \mathbf{t
 
 Формально близость апостериорного распределения к нормальному и 
 сходство Байесовских и классических оценок параметров
-описывает теорема Бершнейтна-фон Мизеса.
-\index{теорема Бершнейтна-фон Мизеса}
+описывает теорема Бернштейна-фон Мизеса.
+\index{теорема Бернштейна-фон Мизеса}
 
 \begin{Theorem}[Теорема Берншейтна-фон Мизеса]
 Пусть для задачи статистического оценивания выполнен ряд условий регулярности: классическая эффективная оценка $\estTk$ асимптотически нормальна, и априорное распределение ведет себя достаточно регулярно, в частности в окрестности истинного значения параметра $\theta_0$.

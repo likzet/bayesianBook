@@ -232,7 +232,7 @@ I(\vecT)_{ij} = -\bbE_{\vecT} \left[ \frac{\partial^2 \log p(X | \vecT)}{\partia
 Задача состоит в оценке $\|\vecT\|^2$.
 
 В таком случае априорное распределение Джеффриса будет равномерным.
-Апостериорное распределение в таком случае будет нецентральным $\xi^2$ распределением с $\pD$ степенями свободы.
+Апостериорное распределение в таком случае будет нецентральным $\chi^2$ распределением с $\pD$ степенями свободы.
 Апостериорное среднее
 \[
 \bbE (\|\vecT \|^2 | \vecX) = \|\vecX \|^2 + \pD.
@@ -254,7 +254,7 @@ I(\vecT)_{ij} = -\bbE_{\vecT} \left[ \frac{\partial^2 \log p(X | \vecT)}{\partia
 \begin{align*}
 I(\vecT) &= -
 \begin{pmatrix}
-\frac{1}{\sigma^2}           & \frac{2 (x - \mu)}{\sigma^2} \\
+-\frac{1}{\sigma^2}           & \frac{2 (x - \mu)}{\sigma^2} \\
 \frac{2 (x - \mu)}{\sigma^2} & \frac{3}{\sigma^4} (x - \mu)^2 - \frac{1}{\sigma^2} \\
 \end{pmatrix} = \\
 &= 
