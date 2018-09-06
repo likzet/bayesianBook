@@ -23,10 +23,10 @@ p(\theta | x) \propto p(x| \theta) \pi(\theta).
 
 Таким образом, мы ввели следующие объекты:
 \begin{itemize}
-	\item априорное распределение $\pi(\theta)$,
-	\item правдоподобие $p(x| \theta)$,
-	\item апостериорное распределение $p(\theta | x)$,
-	\item маргинальное распределение $p(x) = \int p(x| \theta) \pi(\theta) d\theta$.
+	\item априорное распределение $\pi(\theta)$, \index{распределение!априорное}
+	\item правдоподобие $p(x| \theta)$, \index{правдоподобие}
+	\item апостериорное распределение $p(\theta | x)$, \index{распределение!апостериорное}
+	\item маргинальное распределение $p(x) = \int p(x| \theta) \pi(\theta) d\theta$. \index{распределение!маргинальное}
 \end{itemize}
 
 В классической статистике мы предполагаем, что задана модель данных,
@@ -77,7 +77,7 @@ p(\theta | x) \propto p(x | \theta),
 Если мы рассмотрим взаимно-однозначное преобразование случайной величины $\theta$, равномерное распределенной на $\Theta = [0, 1]$, например,
 \begin{align*}
 \rho &= \frac{\theta}{1 - \theta}, \rho \in (0, \infty), \\
-   r &= \log \left( \frac{\theta}{1 - \theta} \right), r \in [0, 1], \\
+   r &= \log \left( \frac{\theta}{1 - \theta} \right), r \in (-\infty, \infty), \\
 \end{align*}
 мы получим, что априорные распределения $\pi(\rho)$ и $\pi(r)$ уже не будут равномерными.
 
