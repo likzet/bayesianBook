@@ -63,17 +63,20 @@ p(\vecX | \vecA) \propto x_1^{\alpha_1 - 1} \cdot \ldots \cdot x_k^{\alpha_k - 1
 
 В этом разделе определим экспоненциальное семейство распределений и получим ряд его полезных свойств.
 \begin{Definition}
-Будем говорить, что распределение принадлежит экспоненциальному семейству, если
-его плотность (относительно меры Лебега) имеет вид:
+Будем говорить, что распределение многомерной случайной величины $\vecX$ принадлежит экспоненциальному семейству, если
+его плотность относительно меры Лебега $p(\vecX | \vecT)$ имеет вид:
 \[
 p(\vecX | \vecT) = h(\vecX) \exp \left(\vecT^\T T(\vecX) - A(\vecT) \right).
 \]
 \end{Definition}
 
-Параметризация $\vecT$, для которой правдоподобие имеет такой вид, называется канонической, 
-а вектор $T(\vecX)$ --- вектор достаточных статистик для модели, то есть такая функция данных $\vecX$, что
+Параметризация вектора параметров распределения $\vecT$, для которой правдоподобие имеет такой вид, называется \emph{канонической}. 
+
+Вектор $T(\vecX)$ --- вектор достаточных статистик для модели, то есть такая функция данных $\vecX$, что
 условное распределение $P(\vecX | \vecT)$ совпадает с условным распределением $P(\vecX | T, \vecT)$.
-Эквивалентное утверждение, необходимое и достаточное условие того, что статистика является достаточной: $P(\vecT | \vecX, T) = P(\vecT | T)$.
+Эквивалентное утверждение, необходимое и достаточное условие того, что статистика является достаточной определяет взаимосвязь условных распределений $P(\vecT | \vecX, T) = P(\vecT | T)$.
+
+Для экспоненциального семейства распределений вектор достаточных статистик конечен. Теорема Питмана-Купмана-Дармуа утверждает, что принадлежность к экспоненциальному семейству --- необходимое и достаточное условие для того, чтобы размер вектора достаточных статистик не зависел от размера выборки, если область возможных значений не зависит от вектора параметров.
 
 Экспоненциальному семейству распределений принадлежат почти все используемые в математической статистике распределения: нормальное, биномиальное, Пуассоновское.
 Среди известных распределений, которые не принадлежат этому семейству распределений, --- распределение Коши.
@@ -88,32 +91,40 @@ p(x | \alpha) &= \alpha^{x} (1 - \alpha)^{1 - x} = \\
 &= \exp \left[x \log \frac{\alpha}{1 - \alpha} + \log (1 - \alpha)) \right] = \\
 &= \exp \left[x \theta - \log (1 + e^{\theta})\right].
 \end{align*}
-Для распределения Бернулли 
+Для распределения Бернулли минимальная достаточная статистика
 \[
-T(x) = x, \theta = \log {\alpha}{1 - \alpha}, A(\theta) = \log (1 + e^{\theta}).
+T(x) = x, 
+\]
+Каноническая параметризация 
+\[
+\theta = \log \frac{\alpha}{1 - \alpha}, 
+\]
+а $A(\theta)$ и $h(\vecX)$:
+\[
+A(\theta) = \log (1 + e^{\theta}), h(\vecX) = 1.
 \]
 \end{example}
 
 Покажем теперь, что нормальное распределение тоже принадлежит экспоненциальному семейству
 \begin{example}
 \begin{align*}
-p(x) &= \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{1}{2 \sigma^2} (x - \mu)^2 \right) =\\
+p(x| \mu, \sigma) &= \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{1}{2 \sigma^2} (x - \mu)^2 \right) =\\
      &= \frac{1}{\sqrt{2 \pi}} \exp \left(-\log \sigma - \frac{x^2}{2 \sigma^2} + \frac{\mu x}{\sigma^2} - \frac{\mu^2}{2 \sigma^2} \right) = \\
     &= \frac{1}{\sqrt{2 \pi}} \exp \left( \vecT^\T T(x) - \log \sigma - \mu^2 / (2 \sigma^2) \right),
 \end{align*}
 $h(x) = \frac{1}{\sqrt{2 \pi}}$, $A(\vecT) = \log \sigma + \mu^2 / (2 \sigma^2)$.
-Получаем достаточные статистики:
+Получаем вектор достаточных статистик:
 \[
 T(x) = \begin{pmatrix}
 x \\
 x^2 
-\end{pmatrix}
+\end{pmatrix},
 \]
-Каноническую параметризацию:
+и каноническую параметризацию:
 \[
 \vecT = \begin{pmatrix}
 \mu / \sigma^2 \\
--1 / (2 \sigma^2)
+-1 / (2 \sigma^2).
 \end{pmatrix}
 \]
 Компонента $A(\theta)$ имеет следующий вид как функция от канонических параметров:
@@ -125,19 +136,24 @@ A(\theta) = \frac{\mu}{2 \sigma^2} + \log \sigma = - \frac{\theta_1^2}{4 \theta_
 Приведем еще три важных свойства распределений из этого семейства.
 \begin{Theorem}
 \label{th:exponential_derivative}
-\[
-\frac{d A(\vecT)}{d \vecT} = \bbE_{p_{\vecT}} T(\vecX).
-\]
+\begin{equation}
+\label{eq:a_derivative}
+\frac{\partial A(\vecT)}{\partial \vecT} = \bbE_{p_{\vecT}} T(\vecX).
+\end{equation}
 \end{Theorem}
 \begin{proof}
-Используя то, что интеграл плотности вероятностного распределения равен $1$, получим:
+Интеграл плотности вероятностного распределения $p(\vecX| \vecT)$ равен $1$:
+\[
+1 = \int_{\bbR^{\iD}} h(\vecX) \exp \left(\vecT^T T(\vecX) - A(\vecT) \right) d\vecX.
+\]
+Перенесем $\exp \left(A(\vecX) \right)$ и прологарифмируем левую и правую часть:
 \[
 A(\vecT) = \log \left[\int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX)) d \vecX \right].
 \]
 Обозначим $Q(\vecT) = \int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX)) d \vecX$.
 Подсчитаем производную:
 \begin{align*}
-\frac{d A(\vecT)}{d \vecT} &= \frac{1}{Q(\vecT)} \frac{d Q(\vecT)}{d \vecT} = \frac{Q'(\vecT)}{Q(\vecT)} = \\
+\frac{\partial A(\vecT)}{\partial \vecT} &= \frac{1}{Q(\vecT)} \frac{\partial Q(\vecT)}{\partial \vecT} = \frac{Q'(\vecT)}{Q(\vecT)} = \\
 &= \frac{\int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX)) T(\vecX) d \vecX}{\int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX)) d \vecX} = \\
 &= \frac{\int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX) - A(\vecT)) T(\vecX) d \vecX}{\int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX) - A(\vecT)) d \vecX} = \\
 &= \int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX) - A(\vecT)) T(\vecX) d \vecX = \\
@@ -145,20 +161,26 @@ A(\vecT) = \log \left[\int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX)) d \vec
 \end{align*}
 Получается, что мы явно можем выразить эту производную как математическое ожидание достаточной статистики:
 \[
-\frac{d A(\vecT)}{d \vecT} = \bbE_{p_{\vecT}} T(\vecX).
+\frac{\partial A(\vecT)}{\partial \vecT} = \bbE_{p_{\vecT}} T(\vecX).
 \]
 \end{proof}
 \begin{Theorem}
 Функция $A(\vecT)$ выпуклая.
 \end{Theorem}
 \begin{proof}
-Если мы возьмем вторую производную, то получим:
+Возьмем вторую производную от $\frac{\partial A(\vecT)}{\partial \vecT}$, то получим:
+\begin{align*}
+\frac{\partial A'(\vecT)}{\partial \vecT} &= \frac{\partial }{\partial \vecT} \left[\frac{Q'(\vecT)}{Q(\vecT)} \right] = \frac{\partial }{\partial \vecT} \left[ Q'(\vecT) \frac{1}{Q(\vecT)} \right] = \\
+&=  \frac{\int h(\vecX) \exp \left(\vecT^T T(\vecX)  - A(\vecT)\right) T^2(\vecX) d \vecX}{\int h(\vecX) \exp \left(\vecT^T T(\vecX)  - A(\vecT)\right) d \vecX} - \left(\bbE_{p_{\vecT}} T(\vecX) \right)^2 = \\
+&= \bbE_{p_{\vecT}} T^2(\vecX) - \left(\bbE_{p_{\vecT}} T(\vecX) \right)^2 = \mathrm{cov}_{p_{\vecT}} T(\vecX).
+\end{align*}
+То есть, гессиан $A(\vecT)$ --- ковариационная матрица:
 % TODO вставить вывод
 \[
-\frac{d^2 A(\vecT)}{d \vecT^2} = \mathrm{Cov}_{p_{\vecT}} T(\vecX).
+\frac{\partial^2 A(\vecT)}{\partial \vecT^2} = \mathrm{cov}_{p_{\vecT}} T(\vecX).
 \]
-Ковариационная матрица случайного вектора $\mathrm{Cov}_{p_{\vecT}} T(\vecX)$ неотрицательно определена.
-Поэтому функция $A(\vecT)$ выпуклая.
+Ковариационная матрица случайного вектора $\mathrm{cov}_{p_{\vecT}} T(\vecX)$ неотрицательно определена.
+Следовательно, функция $A(\vecT)$ выпуклая.
 \end{proof}
 
 Наконец обозначим $\vecMu = \bbE T(\vecX)$.
@@ -170,8 +192,16 @@ A(\vecT) = \log \left[\int_{\bbR^{\iD}} h(\vecX) \exp( \vecT^\T T(\vecX)) d \vec
 \]
 \end{Theorem}
 \begin{proof}
-Используем утверждение~\ref{th:exponential_derivative} и явно дифференцируем плотность.
+Используем Теорему~\ref{th:exponential_derivative} и явно дифференцируем плотность.
 \end{proof}
 
-Отметим, что оценки максимума правдоподобия $\hat{\vecMu}_{MLE}$ будут несмещенными и эффективными (для них будет выполнено неравенство Рао-Крамера).
+Так как выполнено~\eqref{eq:a_derivative}, 
+то решение уравнения 
+\[
+\frac{d A(\vecT)}{d \vecT} = \frac{1}{n} \sum_{i = 1}^{n} T(x_i).
+\]
+может использоваться для оценки вектора параметров $\vecT$
+
+Оценки максимума правдоподобия $\hat{\vecMu}_{MLE}$ будут несмещенными и эффективными (для них будет выполнено неравенство Рао-Крамера).
+
 % TODO написать про это

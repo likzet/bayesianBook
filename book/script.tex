@@ -3,7 +3,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
 \usepackage[russian]{babel}
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
 \usepackage{textcomp}
 \usepackage{mathrsfs}
 \usepackage{graphicx,epstopdf}
@@ -16,6 +17,7 @@
 
 \usepackage{algpseudocode,algorithm,algorithmicx}
 
+\newenvironment{proof}{\paragraph{Доказательство:}}{\hfill$\square$}
 \newcommand*\Let[2]{\State #1 $\gets$ #2}
 \algrenewcommand\algorithmicrequire{\textbf{Вход:}}
 
