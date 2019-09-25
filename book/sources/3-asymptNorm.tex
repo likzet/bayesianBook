@@ -18,31 +18,34 @@
 Формальное утверждение про близость Байесовских и классических оценок 
 составляет теорема суть теоремы Бернштейна-фон Мизеса.
 
-Рассмотрим выборку независимых одинаково распределенных величин $X = \{\vecX_1, \ldots, \vecX_{\sS} \}$ из распределения с плотностью $f(\vecX | \theta)$. 
+Рассмотрим выборку независимых одинаково распределенных величин $X = \{\vecX_1, \ldots, \vecX_{\sS} \}$ из распределения с плотностью $p(\vecX | \theta_0)$. 
 Параметр $\theta \in \Theta$, $\Theta$ --- открытое подмножество $\bbR$.
+Мы хотим по выборке оценить значение параметра $\theta_0$.
+
 Будем предполагать следующие условия регулярности:
 \begin{itemize}
-	\item[A1] Носитель $f(\vecX | \theta)$ одинаков для всех $\theta \in \Theta$
-	\item[A2] Логарифм правдоподобия $l(\vecX | \theta) = \log p(\vecX | \theta)$ трижды непрерывно дифференцируем по $\theta$ в окрестности истинного значения $(\theta_0 - \delta, \theta_0 + \delta)$. Обозначим $\dot{l}(\vecX | \theta)$,
-	$\ddot{l}(\vecX | \theta)$, $\dddot{l}(\vecX | \theta)$ первую, вторую и третью частные производные по параметру правдоподобия. Пусть математические ождидания $\bbE_{\theta_0} \dot{l}(\vecX | \theta)$, 
-	$\bbE_{\theta_0} \ddot{l}(\vecX | \theta)$ конечны, и
+	\item[A1] Носитель $p(\vecX | \theta)$ не зависит от $\theta \in \Theta$
+	\item[A2] Логарифм правдоподобия $L( \theta) = \log p(\vecX | \theta)$ трижды непрерывно дифференцируем по $\theta$ в окрестности истинного значения $(\theta_0 - \delta, \theta_0 + \delta)$ для некоторого $\delta > 0$. 
+	Обозначим $\dot{L}(\theta)$, 
+	$\ddot{L}(\theta)$, $\dddot{L}(\theta)$ первую, вторую и третью частные производные правдоподобия по параметру $\theta$. Пусть математические ождидания $\bbE_{\theta_0} \dot{L}( \theta)$, 
+	$\bbE_{\theta_0} \ddot{L}( \theta)$ конечны, и
 	\[
-	\sup_{\theta \in (\theta_0 - \delta, \theta_0 + \delta)} |\dddot{l}(\vecX | \theta)| < M(\vecX),
+	\sup_{\theta \in (\theta_0 - \delta, \theta_0 + \delta)} |\dddot{L}(\theta)| < M(\vecX),
 	\]
 	причем $\bbE_{\theta_0} M(\vecX) < \infty$.
-	\item[A3] Можно менять местами математическое ожидание по $\theta_0$и дифференцирование по $\theta_0$, так что
+	\item[A3] Можно менять местами математическое ожидание по $\theta_0$ и дифференцирование по $\theta_0$, так что
 	\begin{align*}
-	\bbE_{\theta_0} \dot{l}(\vecX | \theta_0) &= 0 \\
-	\bbE_{\theta_0} \ddot{l}(\vecX | \theta_0) &= - \bbE_{\theta_0} (\dot{l}(\vecX | \theta))^2.
+	\bbE_{\theta_0} \dot{L}( \theta_0) &= 0 \\
+	\bbE_{\theta_0} \ddot{L}( \theta_0) &= - \bbE_{\theta_0} (\dot{L}( \theta_0))^2.
 	\end{align*}
-	\item[A4] Информация Фишера\index{информация Фишера} $I(\theta_0)^2 = \bbE_{\theta_0} (\dot{l}(\vecX | \theta_0))^2 > 0$.
+	\item[A4] Информация Фишера\index{информация Фишера} $I(\theta_0)^2 = \bbE_{\theta_0} (\dot{L}(\theta_0))^2 > 0$.
 \end{itemize}
 
 В таких предположениях состоятельная оценка максимума правдоподобия
 будет асимптотически нормальной.
 
 \begin{Theorem}
-Пусть для семейства плотностей $\{f(\vecX|\theta), \theta \in \Theta\}$ выполнены предположения [A1]-[A4] и оценка максимума правдоподобия $\mleT_{\sS}$ состоятельна, то
+Пусть для семейства плотностей $\{p(\vecX|\theta), \theta \in \Theta\}$ выполнены предположения [A1]-[A4] и оценка максимума правдоподобия $\mleT_{\sS}$ состоятельна. Тогда
 \[
 \sqrt{\sS} (\mleT_{\sS} - \theta_0) \rightarrow^D \mathcal{N} \left(0, \frac{1}{I(\theta_0)}\right).
 \]
@@ -51,20 +54,20 @@
 \begin{proof}
 Утверждение теоремы следует из центральной предельной теоремы и усиленного закона больших чисел. 
 
-Обозначим $l_\sS(\theta) = \sum_{i = 1}^{\sS} l(\vecX_i | \theta)$,
-а ее первую, вторую и третью производную по $\theta$ --- $\dot{l}_\sS(\theta), \ddot{l}_\sS(\theta)$ и $\dddot{l}_\sS(\theta)$ соответственно.
-Разложим производную $l_\sS(\theta)$ по Тейлору:
+Обозначим $L_\sS(\theta) = \sum_{i = 1}^{\sS} \log p(\vecX_i | \theta)$,
+а ее первую, вторую и третью производную по $\theta$ --- $\dot{L}_\sS(\theta), \ddot{L}_\sS(\theta)$ и $\dddot{L}_\sS(\theta)$ соответственно.
+Разложим производную $L_\sS(\theta)$ по Тейлору:
 \[
-0 = \dot{l}_{\sS}(\mleT_\sS) = \dot{l}_{\sS}(\theta_0) + (\mleT_\sS - \theta_0) \ddot{l}_{\sS}(\theta_0) + \frac12 (\mleT_\sS - \theta_0)^2 \dddot{l}_{\sS}(\theta'),
+0 = \dot{L}_{\sS}(\mleT_\sS) = \dot{L}_{\sS}(\theta_0) + (\mleT_\sS - \theta_0) \ddot{L}_{\sS}(\theta_0) + \frac12 (\mleT_\sS - \theta_0)^2 \dddot{L}_{\sS}(\theta'),
 \]
 где $\theta_0 \leq \theta' \leq \mleT_\sS$.
 Тогда
 \[
-\sqrt{\sS} (\mleT_\sS - \theta_0) = \frac{\frac{1}{\sqrt{\sS}} \dot{l}_{\sS}(\theta_0)}{-\frac{1}{\sS} \ddot{l}_{\sS}(\theta_0) - \frac12 \frac{1}{\sS} \dddot{l}_{\sS}(\theta')}. 
+\sqrt{\sS} (\mleT_\sS - \theta_0) = \frac{\frac{1}{\sqrt{\sS}} \dot{L}_{\sS}(\theta_0)}{-\frac{1}{\sS} \ddot{L}_{\sS}(\theta_0) - \frac12 \frac{1}{\sS} \dddot{L}_{\sS}(\theta')}. 
 \]
 Так как выполнена центральная предельная теорема, то числитель сходится по распределению к $\mathcal{N}(0, I(\theta_0))$.
 Первое слагаемое в знаменателе сходится к $I(\theta_0)$ по усиленному закону больших чисел.
-Второе слагаемое мало в силу состоятельности $\mleT_\sS$ и ограниченности $|\dddot{l}(\vecX | \theta)|$.
+Второе слагаемое мало в силу состоятельности $\mleT_\sS$ и ограниченности $|\dddot{L}(\vecX | \theta)|$.
 Следовательно, левая часть равенства сходится по распределению к 
 $\mathcal{N}(0, 1 / I(\theta_0))$.
 % https://ocw.mit.edu/courses/mathematics/18-443-statistics-for-applications-fall-2006/lecture-notes/lecture3.pdf
@@ -75,7 +78,7 @@ $\mathcal{N}(0, 1 / I(\theta_0))$.
 \begin{itemize}
 	\item[A5] Для произвольного $\delta > 0$ существует $\varepsilon > 0$ такое, что
 	\[
-	P_{\theta_0} \left\{ \sup_{|\theta - \theta_0| > \delta} \frac{1}{\sS} \left( l_\sS(\theta) - l_\sS(\theta_0) \right) \leq -\varepsilon \right\} \rightarrow 1.
+	P_{\theta_0} \left\{ \sup_{|\theta - \theta_0| > \delta} \frac{1}{\sS} \left( L_\sS(\theta) - L_\sS(\theta_0) \right) \leq -\varepsilon \right\} \rightarrow 1.
 	\]
 	\item[A6] Априорная плотность распределения $\pi(\theta)$ непрерывна и положительна в $\theta_0$.
 \end{itemize}
@@ -83,7 +86,7 @@ $\mathcal{N}(0, 1 / I(\theta_0))$.
 \begin{Theorem}[Теорема Бернштейна-фон Мизеса]
 \index{теорема Бернштейна-фон Мизеса}
 Пусть выполнены предположения [A1]-[A6], а $\mleT_\sS$ --- состоятельная оценка максимума правдоподобия.
-Обозначим совместную плотность выборки $f(X| \theta)$.
+Обозначим совместную плотность выборки $p(X| \theta)$.
 Тогда для $\sS \rightarrow \infty$:
 \[
 \int_\bbR \left|p(s | X) - \frac{1}{\sqrt{2\pi}\sqrt{I(\theta_0)^{-1}}} \exp \left(-\frac{1}{2 I(\theta_0)^{-1}} s^2 \right) \right| ds \rightarrow^{p} 0,
